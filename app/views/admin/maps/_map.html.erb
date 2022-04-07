@@ -1,0 +1,123 @@
+
+<html>
+  <head>
+    <style>
+      .map {
+        height: 80vh;
+        width: 90vw;
+        margin: 0 auto;
+      }
+    </style>
+    <script>
+    let coords = [];
+
+    let street, name, batteries, columns, elevators, tech_name;
+  
+
+    <% Building.all.each do |building|
+        columnsNum = 0 
+        elevatorsNum = 0
+        building.batteries.all.each do |b|
+          columnsNum += b.columns.count
+            b.columns.all.each do |c|
+              elevatorsNum += c.elevators.count
+          end
+        end %>
+
+      street = "<%= building.address.number_street %>"
+      name = "<%= building.customer.company_name %>"
+      batteries = "<%= building.batteries.count %>"
+      columns = "<%= columnsNum  %>"
+      elevators = <%= elevatorsNum %>
+      tech_name = "<%= building.tech_contact_name %>"
+
+      coords.push([
+        <%= building.address.lat.to_f %>,
+        <%= building.address.lng.to_f %>,
+        {
+          street,
+          name,
+          batteries,
+          columns,
+          elevators,
+          tech_name
+        }
+      ])
+
+    <% end %>
+
+    // Initialize and add the map
+  function initMap() {
+  
+    const map = new google.maps.Map(document.querySelector(".map"), {
+      zoom: 5,
+      center:  { lat: 39.8, lng: -98.5 },
+    });
+
+    setMarkers(map);
+    
+    //list of coordinates for addresses 
+    //need to seed in addresses data---
+    // let coords = []
+    // for each address in address table (use address model) <---(use embedded ruby) <% %>  use active record to loop through
+    // create a new sub array using addresss ID, lat, lng
+    // add subarray to coords (push append ect)
+
+    
+    function setMarkers(map) {
+      console.log(coords)
+      for (let i = 0; i < coords.length; i++) {
+        // This code add the markers to the map using lat and long coords
+        const coordinates = coords[i];
+
+        let marker = new google.maps.Marker({
+          position: { lat: coordinates[0], lng: coordinates[1] },
+          map,
+        });
+    
+        // This code add the info window content to each marker
+        let _info = coordinates[2];
+        let content = `<p>Location of the Building: ${_info.street}<p>
+                       <p>Company/Contact: ${_info.name}<p>
+                       <p>Number of Batteries: ${_info.batteries}<p>
+                       <p>Number of Columns: ${_info.columns}<p>
+                       <p>Number of Elevators: ${_info.elevators}<p>
+                       <p>Technical Contact: ${_info.tech_name}<p>`
+                      
+
+        const info = new google.maps.InfoWindow({
+          content: content,
+        });
+
+        marker.addListener("mouseover", () => {
+          info.open({
+            anchor: marker,
+            map,
+            shouldFocus: false,
+          });
+        });
+        marker.addListener('mouseout', ()=>{
+          info.close({
+            map,
+            shouldFocus: false
+          })
+        });
+      }
+    }
+  }
+  
+    
+
+  </script>
+  </head>
+  <body>
+    <h3>Our Customers</h3>
+    <!--The div element for the map -->
+    <div class="map"></div>
+    
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["Maps_API_Key"] %>&callback=initMap&v=weekly" async></script>
+  </body>
+</html>
+ 

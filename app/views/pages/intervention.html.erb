@@ -1,0 +1,450 @@
+<head>
+	<title>Rocket Elevators | Intervention</title>
+</head>
+
+		<!-- wrapper -->
+		<div id="wrapper">
+
+
+
+			<!-- 
+				AVAILABLE HEADER CLASSES
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+				.b-0 		= remove bottom border (only with transparent use)
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+				.clearfix		= required for mobile menu, do not remove!
+			-->
+			<div id="header" class="navbar-toggleable-md clearfix transparent sticky dark disable-uppercase">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="/index">
+							<%= image_tag 'R2.png', alt:"R2" %>
+						</a>
+
+						<!-- 
+							Top Nav 
+							
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									.nav-onepage
+									Required for onepage navigation links
+									
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="index.html" id="home-nav">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<a href="index.html#services" id="services-nav">
+											SERVICES
+										</a>
+									</li>
+									<li><!-- WORK -->
+										<a href="index.html#portfolio" id="portfolio-nav">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="index.html#news" id="news-nav">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="index.html#clients" id="clients-nav">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="index.html#contact" id="contact-nav">
+											CONTACT
+										</a>
+									</li>
+										<% if user_signed_in? %>
+										<li><!-- BACK OFFICE INTERVENTION -->
+											<a href="/intervention" id="contact-nav">
+												INTERVENTION
+											</a>
+										</li>
+									<% end %>
+									<li><!-- LOGIN -->
+										<a href=<%= new_user_session_path %> id="contact-nav">
+											LOGIN
+										</a>
+									</li>
+									<% if user_signed_in? %>
+										<li><!-- BACK OFFICE -->
+											<a href="/admin" id="contact-nav">
+												Back Office
+											</a>
+										</li>
+									<% end %>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+
+
+
+			<!-- REVOLUTION SLIDER -->
+			<section id="slider" class="fullwidthbanner-container roundedcorners">
+				<!--
+					Navigation Styles:
+					
+						data-navigationStyle="" theme default navigation
+						
+						data-navigationStyle="preview1"
+						data-navigationStyle="preview2"
+						data-navigationStyle="preview3"
+						data-navigationStyle="preview4"
+						
+					Bottom Shadows
+						data-shadow="1"
+						data-shadow="2"
+						data-shadow="3"
+						
+					Slider Height (do not use on fullscreen mode)
+						data-height="300"
+						data-height="350"
+						data-height="400"
+						data-height="450"
+						data-height="500"
+						data-height="550"
+						data-height="600"
+						data-height="650"
+						data-height="700"
+						data-height="750"
+						data-height="800"
+				-->
+				<div class="fullscreenbanner" data-navigationStyle="preview4">
+					<ul class="hide">
+
+						<!-- SLIDE  -->
+						<%# <li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide title 1" > %>
+						<li data-transition="" data-slotamount="7" data-masterspeed="600"  data-saveperformance="off"  data-title="Home">
+							
+							<%= image_tag("AdobeStock_3294993.jpeg", :alt=>"", :data=>"cover", :data=>"center bottom", :data=>"no-repeat" )%>
+							<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+
+							<div class="tp-caption customin ltl tp-resizeme large_bold_white"
+								data-x="center"
+								data-y="230"
+								data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1200"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 10;">
+								Interventions
+							</div>
+
+							<div class="tp-caption customin ltl tp-resizeme small_light_white"
+								data-x="center"
+								data-y="330"
+								data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+								data-speed="800"
+								data-start="1400"
+								data-easing="easeOutQuad"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.01"
+								data-endelementdelay="0.1"
+								data-endspeed="1000"
+								data-endeasing="Power4.easeIn" style="z-index: 10; width: 750px; max-width: 750px; white-space: normal; text-align:center; font-size:20px;">
+								<span class="font-lato">
+									
+								</span>
+							</div>
+                         
+
+						<!-- SLIDE  -->
+
+					</ul>
+				</div>
+			</section>
+			<!-- /REVOLUTION SLIDER -->
+
+
+
+			
+
+            <section class="b-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 order-lg-2">
+                            <div class="heading-title mt-0">
+                                <h2 class="fs-20 fw-400" id="hi">Intervention Form</h2>
+                            </div>
+
+              
+                    <%= form_with do |form| %>
+
+                        <%# <div class="field" style="display: none;"> %>
+                        <%# <div class="field" > %>
+                            <%# <%= form.label :Author %> 
+                            <%# <%= form.select(:author, Employee.all.collect {|employee| ["#{employee.first_name} #{employee.last_name}"] }.sort_by(&:first), {prompt: "Author"}, {class: 'form-control'}) %> 
+                        <%# </div> %>
+
+                        <div class="form-group" id="customer-all">
+                            <%= form.label :Customer  %>
+                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {prompt: "Customer"}, {class: 'form-control'}) %>
+                        </div>
+                                         
+                        <div class="form-group" id="building-all">
+                            <%= form.label :Building %>
+                            <%= form.select(:building, Building.all.collect {|building| [building.id, building.customer_id ]}, {prompt: "Building"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="battery-all">
+                            <%= form.label :Battery %>
+                            <%= form.select(:battery, Battery.all.collect {|battery| [battery.id, battery.building_id ]}, {prompt: "Battery"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="column-all">
+                            <%= form.label :Column %>
+                            <%= form.select(:column, Column.all.collect {|column| [column.id, column.battery_id ]}, {prompt: "Column"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="elevator-all">
+                            <%= form.label :Elevator %>
+                            <%= form.select(:elevator, Elevator.all.collect {|elevator| [elevator.id, elevator.column_id ]}, {prompt: "Elevator"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="description">
+                            <%= form.label :Description %>
+                            <%# <%= form.text_area(Intervention.all.collect {|intervention| [intervention.report]}) %>   
+							<%= form.text_area :report, class: 'form-control', rows: '6' %>
+                            <%# <textarea  maxlength="10000" rows="5" class="form-control"></textarea>  %>
+                        </div>
+
+                        <div class="fs-20 fw-400">
+							<button type="submit" class="btn btn-primary"><i class="Intervention-btn"></i>SUBMIT</button>
+						</div>
+
+                        
+
+                </div>
+            </section>
+                        <% end %>                     
+							
+					  
+                      
+                           
+    
+
+
+				
+
+
+						<%# <div class="col-lg-5 order-lg-1">
+							<!-- 
+							Available heights
+								h-100
+								h-150
+								h-200
+								h-250
+								h-300
+								h-350
+								h-400
+								h-450
+								h-500
+								h-550
+								h-600
+							-->
+							<div id="map2"><div class="mapouter"><div class="gmap_canvas"><iframe width="400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=418-725%20Boulevard%20Lebourgneuf,%20Qu%C3%A9bec,%20QC%20G2J%200C4,%20Canada&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br><style>.mapouter{position:relative;text-align:right;height:400px;width:400px;}</style><a href="https://www.embedgooglemap.net">map embed iframe</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:400px;}</style></div></div>
+						</div> %>
+
+							<hr />
+
+							<p>
+								<span class="block fw-300">
+									
+								</span>
+								<span class="block fw-300">
+									
+								</span>
+								<span class="block fw-300">
+									
+								</span>
+							</p>
+
+							<ul class="list-unstyled list-icons">
+								<li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 418-725 Boulevard Lebourgneuf, Québec, QC G2J 0C4, Canada</li>
+								<li><i class="fa fa-phone"></i> <strong>Phone:</strong> <a href="tel:(418) 555-1234">(418) 555-1234</a></li>
+								<li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:info@codeboxx.biz">info@codeboxx.biz</a></li>
+							</ul>
+
+
+							<%# <div class="relative clearfix">
+								<!-- social icons -->
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent  float-left social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+									<i class="icon-twitter"></i>
+									<i class="icon-twitter"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-instagram" data-toggle="tooltip" data-placement="top" title="Instagram">
+									<i class="icon-instagram"></i>
+									<i class="icon-instagram"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent  float-left social-gplus" data-toggle="tooltip" data-placement="top" title="Google Plus">
+									<i class="icon-google-plus"></i>
+									<i class="icon-google-plus"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-pinterest" data-toggle="tooltip" data-placement="top" title="IPiterest">
+									<i class="icon-pinterest"></i>
+									<i class="icon-pinterest"></i>
+								</a>
+							</div> %>
+
+
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+			</section>
+
+
+
+
+
+			<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.
+							</p>
+							<h2>(418) 555-1234</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-success" type="submit" disabled>Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				
+
+			</footer>
+			<!-- /FOOTER -->
+
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+ 		
+	 	<!-- JAVASCRIPT FILES -->
+		 <%# javascript_include_tag 'intervention' %>
+
+	<!--
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+	
+		<script src="assets/js/scripts.js"></script>
+
+		<!- PAGE LEVEL SCRIPTS ->
+		<script src="assets/js/view/pack_hotel.js"></script>
+     -->
+		
