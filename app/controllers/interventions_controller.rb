@@ -13,8 +13,10 @@ class InterventionsController < ApplicationController
       battery_id: params[:battery],
       column_id: params[:column],
       elevator_id: params[:elevator],
+      employee_id: Employee.find(params[:employee]),
+          # description: 
       report: params[:report],
-      employee_id: params[:employee]
+      # employee_id: params[:employee]
     )
     
     api_key = ENV['FRESHDESK_API']

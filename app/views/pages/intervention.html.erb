@@ -248,6 +248,15 @@
                             <%= form.select(:elevator, Elevator.all.collect {|elevator| [elevator.id, elevator.column_id ]}, {prompt: "Elevator"}, {class: 'form-control'}) %>
                         </div>
 
+						 <div class="field" > 
+                           <%= form.label :Employee %>
+                           <%= form.select(:employee, Employee.all.collect {|employee| [employee.id,] }.sort_by(&:first), {prompt: "Employee"}, {class: 'form-control'}) %> 
+                         </div>
+
+						<%# <label style="display: inline-block">Employee</label>
+                            <%=select_tag "employee", options_from_collection_for_select(Employee.all, "id", "first_name"), prompt: "None"%>
+                        <%# </div>  %>
+
                         <div class="form-group" id="description">
                             <%= form.label :Description %>
                             <%# <%= form.text_area(Intervention.all.collect {|intervention| [intervention.report]}) %>   
