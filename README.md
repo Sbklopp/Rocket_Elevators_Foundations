@@ -1,5 +1,8 @@
 # Rocket_Elevators_Foundations
 
+
+
+
 ## Deployed Site:
 http://jjyb8989rocketelevators.com/
 
@@ -9,9 +12,15 @@ Timothy.wever@codeboxx.biz
 ### Password:
 password
 
-Once logged in Select the Intervention tab at the top and refresh page if neccesary.
+*Once logged in Select the Intervention tab at the top and refresh page if neccesary.
 
-# Rest
+
+
+
+
+
+
+# Rest API
 
 ### To access
 -You will need to have postman downloaded and installed
@@ -29,6 +38,8 @@ GET "https://consolidation-rest-api.herokuapp.com/api/intervention/pendingelevat
     "status": "Pending"
 }
 
+
+
 ### (2)
 PUT: Change the status of the intervention request to "InProgress" and add a start
 date and time (Timestamp).
@@ -42,6 +53,8 @@ replace "x" with a number 1-8
 }
 
 (use GET with same variable to view change made)
+
+
 
 ### (3)
 PUT: Change the status of the request for action to "Completed" and add an end
