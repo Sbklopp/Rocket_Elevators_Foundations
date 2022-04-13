@@ -88,25 +88,36 @@
 											CONTACT
 										</a>
 									</li>
-										<% if user_signed_in? %>
+										<% if user_signed_in? && current_user.employee %>
 										<li><!-- BACK OFFICE INTERVENTION -->
-											<a href="/intervention" id="contact-nav">
+											<a href="/intervention" id="intervention-nav">
 												INTERVENTION
 											</a>
 										</li>
 									<% end %>
-									<li><!-- LOGIN -->
-										<a href=<%= new_user_session_path %> id="contact-nav">
-											LOGIN
-										</a>
-									</li>
-									<% if user_signed_in? %>
-										<li><!-- BACK OFFICE -->
-											<a href="/admin" id="contact-nav">
-												Back Office
-											</a>
-										</li>
-									<% end %>
+
+								<% if user_signed_in? %>
+                                <li><!-- LOGOUT -->
+                                    <a href=<%= destroy_user_session_path %> id="contact-nav">
+                                    LOGOUT
+                                    </a>
+                                </li>
+								<% else %>
+							<li><!-- LOGIN -->
+								<a href=<%= new_user_session_path %> id="contact-nav">
+									LOGIN
+								</a>
+							</li>
+							<% end %>
+
+							<% if user_signed_in? && current_user.employee %>
+								<li><!-- BACK OFFICE -->
+									<a href="/admin" id="contact-nav">
+										BACK OFFICE 
+									</a>
+								</li>
+								
+							<% end %>
 								</ul>
 
 							</nav>
@@ -216,41 +227,36 @@
 
               
                     <%= form_with do |form| %>
-
-                        <%# <div class="field" style="display: none;"> %>
-                        <%# <div class="field" > %>
-                            <%# <%= form.label :Author %> 
-                            <%# <%= form.select(:author, Employee.all.collect {|employee| ["#{employee.first_name} #{employee.last_name}"] }.sort_by(&:first), {prompt: "Author"}, {class: 'form-control'}) %> 
-                        <%# </div> %>
 						
+
                         <div class="form-group" id="customer-all">
-                            <%= form.label :Customer, :required => true %>
-                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {:required => true, prompt: "Customer"}, {class: 'form-control'}) %>
+                            <%= form.label :Customer, :required => true  %>
+                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {prompt: "Customer"}, {:required => true, class: 'form-control'} ) %>
                         </div>
                                          
                         <div class="form-group" id="building-all">
                             <%= form.label :Building %>
-                            <%= form.select(:building, Building.all.collect {|building| [building.id, building.customer_id ]}, {prompt: "Building"}, {class: 'form-control'}) %>
+                            <%= form.select(:building, Building.all.collect {|building| [building.id, building.customer_id ]}, {prompt: "Building"}, {:required => true, class: 'form-control'}) %>
                         </div>
 
                         <div class="form-group" id="battery-all">
                             <%= form.label :Battery %>
-                            <%= form.select(:battery, Battery.all.collect {|battery| [battery.id, battery.building_id ]}, {prompt: "Battery"}, {class: 'form-control'}) %>
+                            <%= form.select(:battery, Battery.all.collect {|battery| [battery.id, battery.building_id ]}, {prompt: "Battery"}, {:required => true, class: 'form-control'}) %>
                         </div>
 
                         <div class="form-group" id="column-all">
                             <%= form.label :Column %>
-                            <%= form.select(:column, Column.all.collect {|column| [column.id, column.battery_id ]}, {prompt: "Column"}, {class: 'form-control'}) %>
+                            <%= form.select(:column, Column.all.collect {|column| [column.id, column.battery_id ]}, {prompt: "Column"},{class: 'form-control'}) %>
                         </div>
 
                         <div class="form-group" id="elevator-all">
                             <%= form.label :Elevator %>
-                            <%= form.select(:elevator, Elevator.all.collect {|elevator| [elevator.id, elevator.column_id ]}, {prompt: "Elevator"}, {class: 'form-control'}) %>
+                            <%= form.select(:elevator, Elevator.all.collect {|elevator| [elevator.id, elevator.column_id ]}, {prompt: "Elevator"}, {class: 'form-control'} ) %>
                         </div>
 
 						 <div class="field" > 
                            <%= form.label :Employee %>
-                           <%= form.select(:employee, Employee.all.collect {|employee| [employee.id,] }.sort_by(&:first), {prompt: "Employee"}, {class: 'form-control'}) %> 
+                           <%= form.select(:employee, Employee.all.collect {|employee| [employee.id,] }.sort_by(&:first), {prompt: "Employee"}, {:required => true, class: 'form-control'}) %> 
                          </div>
 
 						<%# <label style="display: inline-block">Employee</label>
