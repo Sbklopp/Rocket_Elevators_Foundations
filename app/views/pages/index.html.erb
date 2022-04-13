@@ -61,25 +61,37 @@
 									CONTACT
 								</a>
 							</li>
-								<% if user_signed_in? %>
+								<% if user_signed_in? && current_user.employee %>
 										<li><!-- BACK OFFICE INTERVENTION -->
 											<a href="/intervention" id="intervention-nav">
 												INTERVENTION
 											</a>
 										</li>
 									<% end %>
+
+								<% if user_signed_in? %>
+                                <li><!-- LOGOUT -->
+                                    <a href=<%= destroy_user_session_path %> id="contact-nav">
+                                    LOGOUT
+                                    </a>
+                                </li>
+								<% else %>
 							<li><!-- LOGIN -->
 								<a href=<%= new_user_session_path %> id="contact-nav">
 									LOGIN
 								</a>
 							</li>
-							<% if user_signed_in? %>
+							<% end %>
+
+							<% if user_signed_in? && current_user.employee %>
 								<li><!-- BACK OFFICE -->
 									<a href="/admin" id="contact-nav">
-										Back Office
+										BACK OFFICE 
 									</a>
 								</li>
+								
 							<% end %>
+							
 						</ul>
 
 					</nav>

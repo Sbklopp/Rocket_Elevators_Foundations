@@ -1,12 +1,12 @@
+// $(function() {
+//     initPage();
+// });
+
+// $(window).bind('page:change', function() {
+//     initPage();
+// });
+
 $(function() {
-    initPage();
-});
-
-$(window).bind('page:change', function() {
-    initPage();
-});
-
-function initPage() {
     $('#building-all').hide();
     $('#battery-all').hide();
     $('#column-all').hide();
@@ -22,6 +22,9 @@ function initPage() {
             $("#column-all").hide();
             $("#elevator-all").hide();
             $("select#building option").remove();
+            $("select#battery option").remove();
+            $("select#column option").remove();
+            $("select#elevator option").remove();
         } else {
             $.ajax({
                 dataType: "json",
@@ -35,8 +38,14 @@ function initPage() {
                 },
                 success: function(data) { 
                     $("select#building option").remove();
-                    var row = "<option value=\"" + "" + "\">" + "Customer" + "</option>";
+                    $("select#battery option").remove();
+                    $("select#column option").remove();
+                    $("select#elevator option").remove();
+                    var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
                     $(row).appendTo("select#building");
+                    $(row).appendTo("select#battery");
+                    $(row).appendTo("select#column");
+                    $(row).appendTo("select#elevator");
                     $.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
                         $(row).appendTo("select#building");
@@ -53,7 +62,9 @@ function initPage() {
             $("#battery-all").hide();
             $("column-all").hide();
             $("#elevator-all").hide();
-            $("select#battery option").remove();
+            $("select#battery option").remove(); 
+            $("select#column option").remove();
+            $("select#elevator option").remove();
         } else {
             $.ajax({
                 dataType: "json",
@@ -65,12 +76,19 @@ function initPage() {
                 },
                 success: function(data) { 
                     $("select#battery option").remove();
+                    $("select#column option").remove();
+                    $("select#elevator option").remove();
+                    
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";;
                     $(row).appendTo("select#battery");
+                    $(row).appendTo("select#column");
+                    $(row).appendTo("select#elevator");
+
                     $.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" +  + j.id + " Status: " + j.status + "</option>";
                       
-                        $(row).appendTo("select#battery");
+                    $(row).appendTo("select#battery");
+                        
                     });
                 }
             });
@@ -84,6 +102,7 @@ function initPage() {
             $("#column-all").hide();
             $("#elevator-all").hide();
             $("select#column option").remove();
+            $("select#elevator option").remove();
         } else {
             $.ajax({
                 dataType: "json",
@@ -95,11 +114,15 @@ function initPage() {
                 },
                 success: function(data) { 
                     $("select#column option").remove();
-                    var def_row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(def_row).appendTo("select#column");
+                    $("select#elevator option").remove();
+                    var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
+                    $(row).appendTo("select#column");
+                    $(row).appendTo("select#elevator");
+
                     $.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" +  + j.id + " Status: " + j.status + "</option>";
                         $(row).appendTo("select#column");
+                        $(row).appendTo("select#elevator");
                     });
                 }
             });
@@ -132,7 +155,7 @@ function initPage() {
             });
         }
     }); 
-}
+});
 
 // $(function() {
     

@@ -222,10 +222,10 @@
                             <%# <%= form.label :Author %> 
                             <%# <%= form.select(:author, Employee.all.collect {|employee| ["#{employee.first_name} #{employee.last_name}"] }.sort_by(&:first), {prompt: "Author"}, {class: 'form-control'}) %> 
                         <%# </div> %>
-
+						
                         <div class="form-group" id="customer-all">
-                            <%= form.label :Customer  %>
-                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {prompt: "Customer"}, {class: 'form-control'}) %>
+                            <%= form.label :Customer, :required => true %>
+                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {:required => true, prompt: "Customer"}, {class: 'form-control'}) %>
                         </div>
                                          
                         <div class="form-group" id="building-all">

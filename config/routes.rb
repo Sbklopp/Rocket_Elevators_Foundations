@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   authenticate :user, -> (user) {user.employee} do
     ActiveAdmin.routes(self)
     mount Blazer::Engine, at: "blazer"
+    get '/intervention', to: 'pages#intervention'
   end
   devise_for :users
   # devise_for :users, ActiveAdmin::Devise.config
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   get '/residential', to: 'pages#residential'
   get '/commercial', to: 'pages#commercial'
   get '/quote', to: 'pages#quote'
-  get '/intervention', to: 'pages#intervention'
+
   get '/index', to: 'pages#index'
   # get '/admin/graph', to: redirect('/blazer')
   get '/polly', to: 'polly#speak', as: :polly

@@ -2,7 +2,7 @@ require "freshdesk"
 require 'json'
 
 class InterventionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
 
   def create 
@@ -85,6 +85,7 @@ class InterventionsController < ApplicationController
     #redirect_back(fallback_location: root_path)
     redirect_to('/index')
     puts "======================"
+  # create ends here
   end
 
       # get building by customer
