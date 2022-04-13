@@ -82,7 +82,7 @@ class InterventionsController < ApplicationController
         puts "Response Code: #{exception.response.code} Response Body: #{exception.response.body} "
     end
 
-    # redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
     redirect_to('/index')
     puts "======================"
   end
