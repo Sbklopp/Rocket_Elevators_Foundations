@@ -12,7 +12,7 @@
 //
 
 //= require popper
-//= require turbolinks
+// require turbolinks
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
@@ -25,6 +25,7 @@
 //= require jquery.themepunch.tools.min
 //= require bootstrap.min
 //= require scripts
+//= require intervention
 //= require activestorage
 //= require cable
 //= require contact
@@ -34,6 +35,5 @@
 //= require smoothscroll
 //= require owl.carousel.min
 
-//= require_tree
+// require_tree .
 
-// require intervention

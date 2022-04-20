@@ -18,6 +18,8 @@ class InterventionsController < ApplicationController
       report: params[:report],
       # employee_id: params[:employee]
     )
+
+    # binding.pry
     
     api_key = ENV['FRESHDESK_API']
 
@@ -82,10 +84,13 @@ class InterventionsController < ApplicationController
         puts "Response Code: #{exception.response.code} Response Body: #{exception.response.body} "
     end
 
-    #redirect_back(fallback_location: root_path)
-    redirect_to('/index')
-    puts "======================"
-  # create ends here
+    # binding.pry
+
+    # redirect_to('/index')
+    # puts "======================"
+    # create ends here
+    # redirect_back(fallback_location: root_path)
+    render :js => "window.location = '/intervention'"
   end
 
       # get building by customer

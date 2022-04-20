@@ -1,32 +1,32 @@
-// $(function() {
+// jQuery(function() {
 //     initPage();
 // });
 
-// $(window).bind('page:change', function() {
+// jQuery(window).bind('page:change', function() {
 //     initPage();
 // });
 
-$(function() {
-    $('#building-all').hide();
-    $('#battery-all').hide();
-    $('#column-all').hide();
-    $('#elevator-all').hide();
+jQuery(function() {
+    jQuery('#building-all').hide();
+    jQuery('#battery-all').hide();
+    jQuery('#column-all').hide();
+    jQuery('#elevator-all').hide();
     
     
-    $("select#customer").change(function() {
-        $('#building-all').show();
-        var customer_id = $(this).val();
+    jQuery("select#customer").change(function() {
+        jQuery('#building-all').show();
+        var customer_id = jQuery(this).val();
         if (customer_id == "") {
-            $('#building-all').hide();
-            $("#battery-all").hide();
-            $("#column-all").hide();
-            $("#elevator-all").hide();
-            $("select#building option").remove();
-            $("select#battery option").remove();
-            $("select#column option").remove();
-            $("select#elevator option").remove();
+            jQuery('#building-all').hide();
+            jQuery("#battery-all").hide();
+            jQuery("#column-all").hide();
+            jQuery("#elevator-all").hide();
+            jQuery("select#building option").remove();
+            jQuery("select#battery option").remove();
+            jQuery("select#column option").remove();
+            jQuery("select#elevator option").remove();
         } else {
-            $.ajax({
+            jQuery.ajax({
                 dataType: "json",
                 cache: false,
                 url: '/get_buildings_by_customer/' + customer_id,
@@ -37,36 +37,36 @@ $(function() {
                     alert("Failed to submit : " + errorTextStatus + " ;" + error);
                 },
                 success: function(data) { 
-                    $("select#building option").remove();
-                    $("select#battery option").remove();
-                    $("select#column option").remove();
-                    $("select#elevator option").remove();
+                    jQuery("select#building option").remove();
+                    jQuery("select#battery option").remove();
+                    jQuery("select#column option").remove();
+                    jQuery("select#elevator option").remove();
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(row).appendTo("select#building");
-                    $(row).appendTo("select#battery");
-                    $(row).appendTo("select#column");
-                    $(row).appendTo("select#elevator");
-                    $.each(data, function(i, j) { 
+                    jQuery(row).appendTo("select#building");
+                    jQuery(row).appendTo("select#battery");
+                    jQuery(row).appendTo("select#column");
+                    jQuery(row).appendTo("select#elevator");
+                    jQuery.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
-                        $(row).appendTo("select#building");
+                        jQuery(row).appendTo("select#building");
                     });
                 }
             });
         }
     });
 
-    $("select#building").change(function() {
-        $("#battery-all").show(); 
-        var building_id = $(this).val();
+    jQuery("select#building").change(function() {
+        jQuery("#battery-all").show(); 
+        var building_id = jQuery(this).val();
         if (building_id == "") {
-            $("#battery-all").hide();
-            $("column-all").hide();
-            $("#elevator-all").hide();
-            $("select#battery option").remove(); 
-            $("select#column option").remove();
-            $("select#elevator option").remove();
+            jQuery("#battery-all").hide();
+            jQuery("column-all").hide();
+            jQuery("#elevator-all").hide();
+            jQuery("select#battery option").remove(); 
+            jQuery("select#column option").remove();
+            jQuery("select#elevator option").remove();
         } else {
-            $.ajax({
+            jQuery.ajax({
                 dataType: "json",
                 cache: false,
                 url: '/get_batteries_by_building/' + building_id,
@@ -75,19 +75,19 @@ $(function() {
                     alert("Failed to reach submit : " + errorTextStatus + " ;" + error);
                 },
                 success: function(data) { 
-                    $("select#battery option").remove();
-                    $("select#column option").remove();
-                    $("select#elevator option").remove();
+                    jQuery("select#battery option").remove();
+                    jQuery("select#column option").remove();
+                    jQuery("select#elevator option").remove();
                     
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";;
-                    $(row).appendTo("select#battery");
-                    $(row).appendTo("select#column");
-                    $(row).appendTo("select#elevator");
+                    jQuery(row).appendTo("select#battery");
+                    jQuery(row).appendTo("select#column");
+                    jQuery(row).appendTo("select#elevator");
 
-                    $.each(data, function(i, j) { 
+                    jQuery.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" +  + j.id + " Status: " + j.status + "</option>";
                       
-                    $(row).appendTo("select#battery");
+                    jQuery(row).appendTo("select#battery");
                         
                     });
                 }
@@ -95,16 +95,16 @@ $(function() {
         }
     }); 
 
-    $("select#battery").change(function() {
-        $("#column-all").show();
-        var battery_id = $(this).val();
+    jQuery("select#battery").change(function() {
+        jQuery("#column-all").show();
+        var battery_id = jQuery(this).val();
         if (battery_id == "") {
-            $("#column-all").hide();
-            $("#elevator-all").hide();
-            $("select#column option").remove();
-            $("select#elevator option").remove();
+            jQuery("#column-all").hide();
+            jQuery("#elevator-all").hide();
+            jQuery("select#column option").remove();
+            jQuery("select#elevator option").remove();
         } else {
-            $.ajax({
+            jQuery.ajax({
                 dataType: "json",
                 cache: false,
                 url: '/get_columns_by_batteries/' + battery_id,
@@ -113,29 +113,29 @@ $(function() {
                     alert("Failed to reach submit : " + errorTextStatus + " ;" + error);
                 },
                 success: function(data) { 
-                    $("select#column option").remove();
-                    $("select#elevator option").remove();
+                    jQuery("select#column option").remove();
+                    jQuery("select#elevator option").remove();
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(row).appendTo("select#column");
-                    $(row).appendTo("select#elevator");
+                    jQuery(row).appendTo("select#column");
+                    jQuery(row).appendTo("select#elevator");
 
-                    $.each(data, function(i, j) { 
+                    jQuery.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" +  + j.id + " Status: " + j.status + "</option>";
-                        $(row).appendTo("select#column");
-                        $(row).appendTo("select#elevator");
+                        jQuery(row).appendTo("select#column");
+                        jQuery(row).appendTo("select#elevator");
                     });
                 }
             });
         }
     }); 
-    $("select#column").change(function() {
-        $("#elevator-all").show();
-        var column_id = $(this).val();
+    jQuery("select#column").change(function() {
+        jQuery("#elevator-all").show();
+        var column_id = jQuery(this).val();
         if (column_id == "") {
-            $("#elevator-all").hide();
-            $("select#elevator option").remove();
+            jQuery("#elevator-all").hide();
+            jQuery("select#elevator option").remove();
         } else {
-            $.ajax({
+            jQuery.ajax({
                 dataType: "json",
                 cache: false,
                 url: '/get_elevators_by_columns/' + column_id,
@@ -144,12 +144,12 @@ $(function() {
                     alert("Failed to reach submit : " + errorTextStatus + " ;" + error);
                 },
                 success: function(data) { 
-                    $("select#elevator option").remove();
+                    jQuery("select#elevator option").remove();
                     var def_row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(def_row).appendTo("select#elevator");
-                    $.each(data, function(i, j) { 
+                    jQuery(def_row).appendTo("select#elevator");
+                    jQuery.each(data, function(i, j) { 
                         var row = "<option value=\"" + j.id + "\">" +  + j.id + " Status: " + j.status + "</option>";
-                        $(row).appendTo("select#elevator");
+                        jQuery(row).appendTo("select#elevator");
                     });
                 }
             });
@@ -157,6 +157,3 @@ $(function() {
     }); 
 });
 
-// $(function() {
-    
-// }); 
